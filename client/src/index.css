@@ -3,49 +3,50 @@
 @tailwind utilities;
 
 :root {
-      --background: 0 0% 100%;
---foreground: 20 14.3% 4.1%;
---muted: 60 4.8% 95.9%;
---muted-foreground: 25 5.3% 44.7%;
---popover: 0 0% 100%;
---popover-foreground: 20 14.3% 4.1%;
---card: 0 0% 100%;
---card-foreground: 20 14.3% 4.1%;
---border: 20 5.9% 90%;
---input: 20 5.9% 90%;
---primary: 207 90% 54%;
---primary-foreground: 211 100% 99%;
---secondary: 60 4.8% 95.9%;
---secondary-foreground: 24 9.8% 10%;
---accent: 60 4.8% 95.9%;
---accent-foreground: 24 9.8% 10%;
---destructive: 0 84.2% 60.2%;
---destructive-foreground: 60 9.1% 97.8%;
---ring: 20 14.3% 4.1%;
---radius: 0.5rem;
-  }
-  .dark {
-      --background: 240 10% 3.9%;
---foreground: 0 0% 98%;
---muted: 240 3.7% 15.9%;
---muted-foreground: 240 5% 64.9%;
---popover: 240 10% 3.9%;
---popover-foreground: 0 0% 98%;
---card: 240 10% 3.9%;
---card-foreground: 0 0% 98%;
---border: 240 3.7% 15.9%;
---input: 240 3.7% 15.9%;
---primary: 207 90% 54%;
---primary-foreground: 211 100% 99%;
---secondary: 240 3.7% 15.9%;
---secondary-foreground: 0 0% 98%;
---accent: 240 3.7% 15.9%;
---accent-foreground: 0 0% 98%;
---destructive: 0 62.8% 30.6%;
---destructive-foreground: 0 0% 98%;
---ring: 240 4.9% 83.9%;
---radius: 0.5rem;
-  }
+  --background: 0 0% 0%;
+  --foreground: 210 40% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 0 0% 0%;
+  --popover-foreground: 210 40% 98%;
+  --card: 0 0% 5%;
+  --card-foreground: 210 40% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 142 71% 45%;
+  --primary-foreground: 144 100% 99%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 270 50% 40%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 350 89% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 0 0% 0%;
+  --foreground: 210 40% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 0 0% 0%;
+  --popover-foreground: 210 40% 98%;
+  --card: 0 0% 5%;
+  --card-foreground: 210 40% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 142 71% 45%;
+  --primary-foreground: 144 100% 99%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 270 50% 40%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 350 89% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+  --radius: 0.5rem;
+}
 
 @layer base {
   * {
@@ -55,4 +56,148 @@
   body {
     @apply font-sans antialiased bg-background text-foreground;
   }
+}
+
+/* Minecraft-style animations */
+@keyframes blockFloat {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.8;
+  }
+}
+
+@keyframes pixelate {
+  0% {
+    background-size: 50px 50px;
+  }
+  50% {
+    background-size: 52px 52px;
+  }
+  100% {
+    background-size: 50px 50px;
+  }
+}
+
+.minecraft-bg {
+  position: relative;
+  background-color: #000;
+  overflow: hidden;
+}
+
+.minecraft-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E%3Cg fill='%23116630' fill-opacity='0.1'%3E%3Crect x='0' y='0' width='25' height='25'/%3E%3Crect x='25' y='25' width='25' height='25'/%3E%3C/g%3E%3C/svg%3E");
+  animation: pixelate 8s infinite ease-in-out;
+  z-index: 0;
+}
+
+.floating-block {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-color: #553322;
+  border: 4px solid #332211;
+  box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 0.2), 0 10px 20px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  animation: blockFloat 8s infinite ease-in-out;
+}
+
+.floating-block.dirt {
+  background-color: #553322;
+  border-color: #332211;
+}
+
+.floating-block.grass {
+  background-color: #116630;
+  border-color: #0e5628;
+}
+
+.floating-block.stone {
+  background-color: #777777;
+  border-color: #555555;
+}
+
+.floating-block.diamond {
+  background-color: #30bfbf;
+  border-color: #259a9a;
+  box-shadow: inset 0 0 10px 2px rgba(255, 255, 255, 0.6), 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.minecraft-text {
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+  letter-spacing: 1px;
+}
+
+.pixel-border {
+  border: 4px solid #000;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+/* Dashboard animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadein {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.animate-pulse-slow {
+  animation: pulse 4s infinite ease-in-out;
+}
+
+/* Create server button effect */
+.create-server-btn {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.create-server-btn::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(45deg);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% { left: -50%; }
+  100% { left: 150%; }
 }

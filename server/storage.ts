@@ -46,7 +46,7 @@ export class MemStorage implements IStorage {
     // Default settings
     this.settings = {
       id: 1,
-      dashboardName: "MinePanel",
+      dashboardName: "CrazeDash",
       skyportApiKey: "",
       skyportApiUrl: "https://skyport.panel/api",
     };

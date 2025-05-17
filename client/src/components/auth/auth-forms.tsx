@@ -61,13 +61,13 @@ export function AuthForms() {
   }
   
   return (
-    <Card className="w-full max-w-md">
+    <Card className="w-full max-w-md pixel-border bg-black/70 backdrop-blur-lg">
       <CardHeader>
-        <CardTitle className="text-2xl font-bold text-center">
-          Welcome to MinePanel
+        <CardTitle className="text-3xl font-bold text-center minecraft-text text-primary">
+          CRAZEDASH
         </CardTitle>
-        <CardDescription className="text-center">
-          Manage your Minecraft servers with ease
+        <CardDescription className="text-center text-white">
+          Ultimate Minecraft Server Dashboard
         </CardDescription>
       </CardHeader>
       <CardContent>
