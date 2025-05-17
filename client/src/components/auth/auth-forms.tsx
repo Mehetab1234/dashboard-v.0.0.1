@@ -61,7 +61,7 @@ export function AuthForms() {
   }
   
   return (
-    <Card className="w-full max-w-md pixel-border bg-black/70 backdrop-blur-lg">
+    <Card className="w-full max-w-md pixel-border bg-black/70 backdrop-blur-lg animate-pulse-slow">
       <CardHeader>
         <CardTitle className="text-3xl font-bold text-center minecraft-text text-primary">
           CRAZEDASH
