@@ -15,7 +15,7 @@ export const users = pgTable("users", {
 
 export const settings = pgTable("settings", {
   id: serial("id").primaryKey(),
-  dashboardName: text("dashboard_name").default("MinePanel").notNull(),
+  dashboardName: text("dashboard_name").default("CRAZEDASH").notNull(),
   skyportApiKey: text("skyport_api_key"),
   skyportApiUrl: text("skyport_api_url").default("https://skyport.panel/api"),
 });
